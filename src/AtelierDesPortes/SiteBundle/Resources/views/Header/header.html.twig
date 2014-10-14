@@ -1,0 +1,33 @@
+<!-- BEGIN TOP BAR -->
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+        	<!-- BEGIN TOP BAR LEFT PART -->
+            {{ include('SiteBundle:Header:topBarLeft.html.twig') }}
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            {{ include('SiteBundle:Header:topBarRight.html.twig') }}
+            <!-- END TOP BAR MENU -->
+        </div>
+    </div>        
+</div>
+<!-- END TOP BAR -->
+
+<!-- BEGIN HEADER -->
+<div class="header">
+	<div class="container">
+        <a class="site-logo" href="{{path('_home')}}"><img src="{{ asset('bundles/atelierdesportes/layout/img/logos/logo_adp_no_text.png') }}" alt="Atelier des Portes" height="70"></a>
+
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+        <!-- BEGIN CART 
+        {#{{ include('SiteBundle:Header:cart.html.twig') }}#}
+        <!--END CART -->
+
+        <!-- BEGIN NAVIGATION -->
+        {{ include('SiteBundle:Header:navigation.html.twig') }}
+        <!-- END NAVIGATION -->
+        
+	</div>
+</div>
+<!-- END HEADER -->
