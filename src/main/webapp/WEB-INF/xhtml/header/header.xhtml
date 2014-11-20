@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition>
+	<!-- BEGIN TOP BAR -->
+	<div class="pre-header">
+	    <div class="container">
+	        <div class="row">
+	        	<!-- BEGIN TOP BAR LEFT PART -->
+	            <ui:include src="/WEB-INF/xhtml/header/topBarLeft.xhtml"/>
+	            <!-- END TOP BAR LEFT PART -->
+	            <!-- BEGIN TOP BAR MENU -->
+	            <ui:include src="/WEB-INF/xhtml/header/topBarRight.xhtml"/>
+	            <!-- END TOP BAR MENU -->
+	        </div>
+	    </div>        
+	</div>
+	<!-- END TOP BAR -->
+	
+	<!-- BEGIN HEADER -->
+	<div class="header">
+		<div class="container">
+	        <a class="site-logo" href="{{path('_home')}}"><img src="#{env['root.path']}/statics/layout/img/logos/logo_adp_no_text.png" alt="Atelier des Portes" height="70"/></a>
+	
+	        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+	
+	        <!-- BEGIN CART -->
+            <ui:include src="/WEB-INF/xhtml/header/cart.xhtml"/>
+	        <!--END CART -->
+	
+	        <!-- BEGIN NAVIGATION -->
+	            <ui:include src="/WEB-INF/xhtml/header/navigation.xhtml"/>
+	        <!-- END NAVIGATION -->
+	        
+		</div>
+	</div>
+	<!-- END HEADER -->
+</ui:composition>
+</html>

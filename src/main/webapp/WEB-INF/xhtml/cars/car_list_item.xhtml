@@ -1,0 +1,14 @@
+<div class="col-md-4 col-sm-6 col-xs-12">
+	<div class="product-item">
+		<div class="pi-img-wrapper">
+			<img src="#{env['root.path']}/statics/pages/img/products/mg-mga-S1313517-1.jpg" class="img-responsive" alt="{{car.title}}">
+			<div>
+				<a href="#{env['root.path']}/statics/pages/img/products/mg-mga-S1313517-1.jpg" class="btn btn-default fancybox-button">Zoom</a>
+			</div>
+		</div>
+		{% set car_url = path('_car', {'car_id' : car._id, 'car_title' : car.title ~ ' - ' ~ car.year}) %}
+		<h3><a href="{{ car_url }}">{{car.title}} - {{car.year}}</a></h3>
+		<div class="pi-price">{{car.price}}€</div>
+		<a href="{{ car_url }}" class="btn btn-default add2cart">Voir le détail</a>
+	</div>
+</div>
