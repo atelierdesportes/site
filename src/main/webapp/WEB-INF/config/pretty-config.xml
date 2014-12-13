@@ -1,6 +1,6 @@
-<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.2.0"
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.3"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.2.0 http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.2.0.xsd">
+	xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.3 http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.3.xsd">
 
 	<url-mapping id="accueil">
 		<pattern value="/"></pattern>
@@ -12,14 +12,46 @@
 		<view-id value="/WEB-INF/xhtml/contact/contact.xhtml"></view-id>
 	</url-mapping>
 	
-	<url-mapping id="oups">
-		<pattern value="/oups"></pattern>
+	<url-mapping id="404">
+		<pattern value="/404"></pattern>
 		<view-id value="/WEB-INF/404.xhtml"></view-id>
+	</url-mapping>
+	
+	<url-mapping id="500">
+		<pattern value="/500"></pattern>
+		<view-id value="/WEB-INF/500.xhtml"></view-id>
 	</url-mapping>
 	
 	<url-mapping id="vehicules">
 		<pattern value="/vehicules"></pattern>
-		<view-id value="/WEB-INF/xhtml/cars/car_list.xhtml"></view-id>
+		<action onPostback="false">#{vehiculeController.loadVehicules}</action>
+		<view-id  value="/WEB-INF/xhtml/cars/car_list.xhtml"></view-id>
+	</url-mapping>
+	
+	<url-mapping id="vehicule_detail">
+		<pattern value="/vehicules/#{ vehicule_id }/"></pattern>
+		<action onPostback="false">#{vehiculeController.afficherDetail}</action>
+		<view-id  value="/WEB-INF/xhtml/cars/car_detail.xhtml"></view-id>
+	</url-mapping>
+	
+	<url-mapping id="services-entretien">
+		<pattern value="/services/entretien"></pattern>
+		<view-id value="/WEB-INF/xhtml/services/entretien.xhtml"></view-id>
+	</url-mapping>
+	
+	<url-mapping id="services-restauration">
+		<pattern value="/services/restauration"></pattern>
+		<view-id value="/WEB-INF/xhtml/services/restauration.xhtml"></view-id>
+	</url-mapping>
+	
+	<url-mapping id="mecanic">
+		<pattern value="/restauration-mecanique"></pattern>
+		<view-id value="/WEB-INF/xhtml/parts/mecanic.xhtml"></view-id>
+	</url-mapping>
+	
+	<url-mapping id="parts">
+		<pattern value="/pieces-detachees"></pattern>
+		<view-id value="/WEB-INF/xhtml/parts/new_and_old.xhtml"></view-id>
 	</url-mapping>
 
 </pretty-config>

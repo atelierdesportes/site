@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:jsf="http://xmlns.jcp.org/jsf">
+<ui:composition template="/WEB-INF/xhtml/layout.xhtml">
+	<ui:param name="title" value="404 - Page introuvable"/>
+	<ui:define name="page_style">
+	</ui:define>
+	<ui:define name="content">
+		<ul class="breadcrumb">
+			<li><a jsf:outcome="pretty:accueil">Accueil</a></li>
+			<li class="active">404</li>
+		</ul>
+		<!-- BEGIN SIDEBAR & CONTENT -->
+		<div class="row margin-bottom-40">
+			<div class="col-md-12 col-sm-12">
+				<div class="content-page page-404">
+               		<div class="number">Aie !</div>
+					<div class="details">
+					   <h3>Hummm...  C'est embarrassant !</h3>
+					   <p>
+					      Une erreur interne s'est produite, sans doute un composant Lucas défaillant.<br/>
+					      <a jsf:outcome="pretty:accueil" class="link">Retournez à l'accueil</a> ou réactualisez la page.
+					   </p>
+					</div>
+           		</div>
+       		</div>
+       	</div>
+     </ui:define>
+</ui:composition>
+</html>

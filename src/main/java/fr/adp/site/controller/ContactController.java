@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 
 import fr.adp.site.bean.AppBean;
 import fr.adp.site.bean.ContactBean;
+import fr.adp.socle.lang.utils.MessageFormat;
 import fr.adp.socle.lang.utils.StringUtils;
 
 @ManagedBean
@@ -26,6 +27,9 @@ import fr.adp.socle.lang.utils.StringUtils;
 public class ContactController {
 
 	private static final Logger LOGGER = Logger.getLogger(ContactController.class);
+	
+	private static final String PATTERN_MAIL = "{0}<br/><br/>Coordonn&acute;es du contact :<br/>Nom : {1}<br/>Email : {2}<br/>T&acute;l&acute;phone : {3}<br/>Cet email a &acute;t&acute; envoy&acute; depuis le formulaire de contact du site.";
+
 
 	@ManagedProperty(value = "#{contactBean}")
 	private ContactBean contactBean;
@@ -66,11 +70,12 @@ public class ContactController {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("donotreply@.fr"));
+			message.setFrom(new InternetAddress("donotreply@atelier-des-portes.fr"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("vincent.lenair@gmail.com"));
 			message.setReplyTo(InternetAddress.parse(contactBean.getContactMail()));
 			message.setSubject(StringUtils.isBlank(contactBean.getSubject()) ? "Un nouveau message depuis votre site" : contactBean.getSubject());
-			message.setText(contactBean.getMessage());
+			String body = MessageFormat.format(PATTERN_MAIL, contactBean.getMessage(), contactBean.getContactName(), contactBean.getContactMail(), contactBean.getContactTel());
+			message.setContent(body, "text/html; charset=utf-8");
 
 			Transport.send(message);
 

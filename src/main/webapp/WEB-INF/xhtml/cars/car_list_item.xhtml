@@ -1,14 +1,25 @@
-<div class="col-md-4 col-sm-6 col-xs-12">
-	<div class="product-item">
-		<div class="pi-img-wrapper">
-			<img src="#{env['root.path']}/statics/pages/img/products/mg-mga-S1313517-1.jpg" class="img-responsive" alt="{{car.title}}">
-			<div>
-				<a href="#{env['root.path']}/statics/pages/img/products/mg-mga-S1313517-1.jpg" class="btn btn-default fancybox-button">Zoom</a>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:jsf="http://xmlns.jcp.org/jsf/html"
+    xmlns:pretty="http://ocpsoft.com/prettyfaces">
+<ui:composition>
+	<div class="col-md-4 col-sm-6 col-xs-12">
+		<div class="product-item">
+			<div class="pi-img-wrapper">
+				<img src="#{vehicule.imagePrincipale}" class="img-responsive" alt="#{vehicule.title}"/>
+				<div>
+					<a href="#{vehicule.imagePrincipale}" class="btn btn-default fancybox-button">Zoom</a>
+				</div>
 			</div>
+			<h3><a href="#">#{vehicule.title} - #{vehicule.annee}</a></h3>
+			<div class="pi-price" jsf:rendered="#{vehicule.tarif gt 0}">#{vehicule.tarif}€</div>
+			<pretty:urlbuffer mappingId="vehicule_detail" var="vehicule_url">
+				<f:param value="#{vehicule.id}"/>
+			</pretty:urlbuffer>
+			<a href="#{vehicule_url}" class="btn btn-default add2cart">Voir le détail</a>
 		</div>
-		{% set car_url = path('_car', {'car_id' : car._id, 'car_title' : car.title ~ ' - ' ~ car.year}) %}
-		<h3><a href="{{ car_url }}">{{car.title}} - {{car.year}}</a></h3>
-		<div class="pi-price">{{car.price}}€</div>
-		<a href="{{ car_url }}" class="btn btn-default add2cart">Voir le détail</a>
 	</div>
-</div>
+</ui:composition>
+</html>

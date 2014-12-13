@@ -5,32 +5,36 @@
     xmlns:jsf="http://xmlns.jcp.org/jsf">
 <ui:composition template="/WEB-INF/xhtml/layout.xhtml">
 	<ui:param name="title" value="Nous Contacter"/>
-	<ui:param name="title" value="Nous Contacter"/>
+	<ui:param name="active_menu" value="contact"/>
 	<ui:define name="content">
 		<ul class="breadcrumb">
-			<li><a href="{{path('_home')}}">Accueil</a></li>
+			<li><a jsf:outcome="pretty:accueil">Accueil</a></li>
 			<li class="active">Contact</li>
 		</ul>
 		<!-- BEGIN SIDEBAR & CONTENT -->
 		<div class="row margin-bottom-40">
 			<!-- BEGIN SIDEBAR -->
 			<div class="sidebar col-md-3 col-sm-3">
-				<h2>Adresse</h2>
 				<address>
+					<strong>Atelier des Portes</strong><br/>
 					Lieu dit Les Portes<br/>
 					53410 Saint Ouën des Toits<br/>
-					<abbr title="Téléphone">Tel:</abbr> <a href="tel:+0033677148391">06 77 14 83 91</a><br/>
+					Tel: <a href="tel:#{appBean.phoneNumber}">#{appBean.formatPhoneNumber}</a><br/>
+					Fax: #{appBean.formatFaxNumber}
 				</address>
 				<address>
 					<strong>Email</strong><br/>
-					<a href="mailto:jj.lenair@atelier-des-portes.com">jj.lenair@atelier-des-portes.com</a><br/>
+					<a href="mailto:#{appBean.mailAdress}">#{appBean.mailAdress}</a><br/>
+				</address>
+				<address>
+					<strong>Horaires</strong><br/>
+					<time itemprop="openingHours" datetime="Mo,Tu,We,Th,Fr,Sa,Su 09:30-19:00">Nous sommes ouverts de 9h à 19h, tous les jours.</time><br/>
+					Cependant, pour plus de facilité, il est préférable de nous contacter pour convenir d'un rendez-vous.
 				</address>
 				<ul class="social-icons margin-bottom-10">
-					<li><a href="#" data-original-title="facebook" class="facebook"></a></li>
-					<li><a href="#" data-original-title="github" class="github"></a></li>
-					<li><a href="#" data-original-title="Goole Plus" class="googleplus"></a></li>
-					<li><a href="#" data-original-title="linkedin" class="linkedin"></a></li>
-					<li><a href="#" data-original-title="rss" class="rss"></a></li>
+					<li><a href="#" data-original-title="Facebook" class="facebook"></a></li>
+					<li><a href="#" data-original-title="Youtube" class="youtube"></a></li>
+					<li><a href="#" data-original-title="Google Plus" class="googleplus"></a></li>
 				</ul>
 			</div>
 			<!-- END SIDEBAR -->
@@ -42,36 +46,49 @@
 					<div id="map" class="gmaps margin-bottom-40" style="height:400px;"></div>
 	
 					<h2>Formulaire de contact</h2>
-					<p>Lorem ipsum dolor sit amet, Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat consectetuer adipiscing elit, sed diam nonummy nibh euismod tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+					<p>Vous pouvez utiliser ce formulaire de contact pour toute demande de renseignement ou de tarif. Nous ne manquerons pas de vous répondre dans les plus brefs délais.</p>
 	
-					<!-- BEGIN FORM-->
-					<form jsf:id="form" class="default-form" role="form">
-						<div class="form-group#{contactBean.errorName ? ' has-error' : ''}">
-							<label jsf:for="name">Votre Nom<span class="require">*</span></label>
-							<input type="text" class="form-control" jsf:id="name" jsf:value="#{contactBean.contactName}"/>
-							<span class="help-block" jsf:rendered="#{contactBean.errorName}">Merci de saisir un nom</span>
+					<div jsf:id="contact_form">
+						<div jsf:rendered="#{contactBean.sendSucces}" class="alert alert-success">
+							<strong>Merci!</strong> Votre message a bien été envoyé.
 						</div>
-						<div class="form-group#{contactBean.errorMail ? ' has-error' : ''}">
-							<label jsf:for="email">Votre Email <span class="require">*</span></label>
-							<input type="text" class="form-control" jsf:id="email" jsf:value="#{contactBean.contactMail}"/>
-							<span class="help-block" jsf:rendered="#{contactBean.errorMail}">Merci de saisir un email valide</span>
+						<div jsf:rendered="#{contactBean.sendError}" class="alert alert-danger">
+							<strong>Désolé!</strong> Une erreur s'est produite, votre message n'a pas été envoyé. Vous pouvez tenter de recommencer ou nous contacter par téléphone.
 						</div>
-						<div class="form-group">
-							<label jsf:for="subject">Objet de votre demande</label>
-							<input type="text" class="form-control" jsf:id="subject" jsf:value="#{contactBean.subject}"/>
-						</div>
-						<div class="form-group#{contactBean.errorMessage ? ' has-error' : ''}">
-							<label jsf:for="message">Votre Message<span class="require">*</span></label>
-							<textarea class="form-control" rows="8" jsf:id="message" jsf:value="#{contactBean.message}"></textarea>
-							<span class="help-block" jsf:rendered="#{contactBean.errorMessage}">Merci de saisir un message</span>
-						</div>
-						<div class="padding-top-20">
-							<button type="submit" class="btn btn-primary" jsf:id="sendButton">
-								<f:ajax listener="#{contactController.sendMail}" execute="@form" render="@form"/>
-								Envoyer
-							</button>
-						</div>
-					</form>
+					
+						<!-- BEGIN FORM-->
+						<form jsf:id="form" class="default-form" role="form" jsf:rendered="#{not contactBean.sendSucces}">
+							<div class="form-group#{contactBean.errorName ? ' has-error' : ''}">
+								<label class="control-label" jsf:for="name">Votre Nom<span class="require">*</span></label>
+								<input type="text" class="form-control" jsf:id="name" jsf:value="#{contactBean.contactName}"/>
+								<span class="help-block" jsf:rendered="#{contactBean.errorName}">Merci de saisir un nom</span>
+							</div>
+							<div class="form-group#{contactBean.errorMail ? ' has-error' : ''}">
+								<label class="control-label" jsf:for="email">Votre Email <span class="require">*</span></label>
+								<input type="text" class="form-control" jsf:id="email" jsf:value="#{contactBean.contactMail}"/>
+								<span class="help-block" jsf:rendered="#{contactBean.errorMail}">Merci de saisir un email valide</span>
+							</div>
+							<div class="form-group">
+								<label class="control-label" jsf:for="tel">Votre numéro de téléphone</label>
+								<input type="text" class="form-control" jsf:id="tel" jsf:value="#{contactBean.contactTel}"/>
+							</div>
+							<div class="form-group">
+								<label class="control-label" jsf:for="subject">Objet de votre demande</label>
+								<input type="text" class="form-control" jsf:id="subject" jsf:value="#{contactBean.subject}"/>
+							</div>
+							<div class="form-group#{contactBean.errorMessage ? ' has-error' : ''}">
+								<label class="control-label" jsf:for="message">Votre Message<span class="require">*</span></label>
+								<textarea class="form-control" rows="8" jsf:id="message" jsf:value="#{contactBean.message}"></textarea>
+								<span class="help-block" jsf:rendered="#{contactBean.errorMessage}">Merci de saisir un message</span>
+							</div>
+							<div class="padding-top-20">
+								<button type="submit" class="btn btn-primary" jsf:id="sendButton">
+									<f:ajax listener="#{contactController.sendMail}" execute="@form" render="contact_form"/>
+									Envoyer
+								</button>
+							</div>
+						</form>
+					</div>
 					<!-- END FORM-->          
 				</div>
 			</div>

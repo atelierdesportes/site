@@ -10,28 +10,28 @@
 				<!-- BEGIN BOTTOM ABOUT BLOCK -->
 				<div class="col-md-3 col-sm-6 pre-footer-col">
 					<h2>En quelques mots ...</h2>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
-					<p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
+					<p>Passionné de voitures et motos anciennes, j'ai par le passé restauré et entretenu de nombreux véhicules anciens que j'ai possedé. J'ai aujourd'hui decidé de partager cette passion pour la mécanique et d'ouvrir mon atelier.</p>
+					<p>N'hésitez pas à me contacter ou à venir me rendre visite à l'atelier.</p>
+					<p>Jean-Jacques Le Nair.</p>
 				</div>
 				<!-- END BOTTOM ABOUT BLOCK -->
 				<!-- BEGIN BOTTOM INFO BLOCK -->
 				<div class="col-md-3 col-sm-6 pre-footer-col">
 					<h2>Information</h2>
 					<ul class="list-unstyled">
-						<li><i class="fa fa-angle-right"></i> <a href="#">Delivery Information</a></li>
-						<li><i class="fa fa-angle-right"></i> <a href="#">Customer Service</a></li>
-						<li><i class="fa fa-angle-right"></i> <a href="#">Order Tracking</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="#">Mentions légales</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="#">Guarantie des véhicules</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="#">Livraison et expedition</a></li>
 						<li><i class="fa fa-angle-right"></i> <a href="#">Shipping &amp; Returns</a></li>
-						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">Contact Us</a></li>
-						<li><i class="fa fa-angle-right"></i> <a href="#">Careers</a></li>
-						<li><i class="fa fa-angle-right"></i> <a href="#">Payment Methods</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="contacts.html">Nous contacter</a></li>
+						<li><i class="fa fa-angle-right"></i> <a href="#">Moyens de paiement</a></li>
 					</ul>
 				</div>
 				<!-- END INFO BLOCK -->
 	
 				<!-- BEGIN TWITTER BLOCK --> 
 				<div class="col-md-3 col-sm-6 pre-footer-col">
-					<h2 class="margin-bottom-0">Latest Tweets</h2>
+					<h2 class="margin-bottom-0">Les dernières nouvelles</h2>
 					<a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color='#57C8EB' data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>      
 				</div>
 				<!-- END TWITTER BLOCK -->
@@ -42,9 +42,9 @@
 					<address class="margin-bottom-40">
 						Lieu dit Les Portes<br/>
 						53410 Saint Ouën des Toits<br/>
-						Tel: 06 77 14 83 91<br/>
-						Fax: <br/>
-						Email: <a href="mailto:jj.lenair@atelier-des-portes.com">jj.lenair@atelier-des-portes.com</a><br/>
+						Tel: #{appBean.formatPhoneNumber}<br/>
+						Fax: #{appBean.formatFaxNumber}<br/>
+						Email: <a href="mailto:#{appBean.mailAdress}">#{appBean.mailAdress}</a><br/>
 					</address>
 				</div>
 				<!-- END BOTTOM CONTACTS -->
@@ -56,12 +56,8 @@
 					<ul class="social-icons">
 						<li><a class="rss" data-original-title="rss" href="#"></a></li>
 						<li><a class="facebook" data-original-title="facebook" href="#"></a></li>
-						<li><a class="twitter" data-original-title="twitter" href="#"></a></li>
 						<li><a class="googleplus" data-original-title="googleplus" href="#"></a></li>
-						<li><a class="linkedin" data-original-title="linkedin" href="#"></a></li>
 						<li><a class="youtube" data-original-title="youtube" href="#"></a></li>
-						<li><a class="vimeo" data-original-title="vimeo" href="#"></a></li>
-						<li><a class="skype" data-original-title="skype" href="#"></a></li>
 					</ul>
 				</div>
 				<!-- END SOCIAL ICONS -->
@@ -71,9 +67,9 @@
 						<h2>Newsletter</h2>
 						<form action="#">
 							<div class="input-group">
-								<input type="text" placeholder="youremail@mail.com" class="form-control"/>
+								<input type="text" placeholder="votreadresse@mail.com" class="form-control"/>
 								<span class="input-group-btn">
-									<button class="btn btn-primary" type="submit">Subscribe</button>
+									<button class="btn btn-primary" type="submit">S'inscrire</button>
 								</span>
 							</div>
 						</form>
@@ -91,17 +87,16 @@
 			<div class="row">
 				<!-- BEGIN COPYRIGHT -->
 				<div class="col-md-6 col-sm-6 padding-top-10">
-					2014 Â© Atelier des Portes. Tous droits rÃ©servÃ©s. 
+					2014 &#169; Atelier des Portes. Tous droits réservés. 
 				</div>
 				<!-- END COPYRIGHT -->
 				<!-- BEGIN PAYMENTS -->
 				<div class="col-md-6 col-sm-6">
 					<ul class="list-unstyled list-inline pull-right">
-						<li><img src="#{env['root.path']}/statics/layout/img/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union"/></li>
-						<li><img src="#{env['root.path']}/statics/layout/img/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express"/></li>
-						<li><img src="#{env['root.path']}/statics/layout/img/payments/MasterCard.jpg" alt="We accept MasterCard" title="We accept MasterCard"/></li>
-						<li><img src="#{env['root.path']}/statics/layout/img/payments/PayPal.jpg" alt="We accept PayPal" title="We accept PayPal"/></li>
-						<li><img src="#{env['root.path']}/statics/layout/img/payments/visa.jpg" alt="We accept Visa" title="We accept Visa"/></li>
+<!-- 						<li><img src="#{env['root.path']}/statics/layout/img/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express"/></li> -->
+<!-- 						<li><img src="#{env['root.path']}/statics/layout/img/payments/MasterCard.jpg" alt="We accept MasterCard" title="We accept MasterCard"/></li> -->
+<!-- 						<li><img src="#{env['root.path']}/statics/layout/img/payments/PayPal.jpg" alt="We accept PayPal" title="We accept PayPal"/></li> -->
+<!-- 						<li><img src="#{env['root.path']}/statics/layout/img/payments/visa.jpg" alt="We accept Visa" title="We accept Visa"/></li> -->
 					</ul>
 				</div>
 				<!-- END PAYMENTS -->

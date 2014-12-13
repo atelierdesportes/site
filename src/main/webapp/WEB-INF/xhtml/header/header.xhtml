@@ -1,7 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:jsf="http://xmlns.jcp.org/jsf">
 <ui:composition>
 	<!-- BEGIN TOP BAR -->
 	<div class="pre-header">
@@ -21,7 +22,8 @@
 	<!-- BEGIN HEADER -->
 	<div class="header">
 		<div class="container">
-	        <a class="site-logo" href="{{path('_home')}}"><img src="#{env['root.path']}/statics/layout/img/logos/logo_adp_no_text.png" alt="Atelier des Portes" height="70"/></a>
+			<h1 jsf:rendered="#{active_menu eq 'accueil'}" class="site-logo"><img src="#{env['root.path']}/statics/layout/img/logos/logo_adp_no_text.png" alt="Atelier des Portes" height="70"/></h1>
+	        <a class="site-logo" jsf:outcome="pretty:accueil" jsf:rendered="#{active_menu ne 'accueil'}"><img src="#{env['root.path']}/statics/layout/img/logos/logo_adp_no_text.png" alt="Atelier des Portes" height="70"/></a>
 	
 	        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 	

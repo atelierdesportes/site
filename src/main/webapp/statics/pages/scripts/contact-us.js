@@ -13,7 +13,7 @@ var ContactUs = function () {
 			   var marker = map.addMarker({
 		            lat: 48.150214,
 					lng: -0.852102,
-		            title: 'Loop, Inc.',
+		            title: 'Atelier des portes',
 		            infoWindow: {
 		                content: "<b>Atelier des Portes</b><br>Lieu dit Les Portes<br>53410 Saint Ouën des Toits"
 		            }

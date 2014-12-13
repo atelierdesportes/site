@@ -4,24 +4,19 @@
 	<parent>
 		<groupId>fr.adp.parent</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.1</version>
+		<version>1.2</version>
 	</parent>
 	<groupId>fr.adp.site</groupId>
 	<artifactId>site-webapp</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>adp-site</name>
-
-	<scm>
-		<connection>scm:svn:svn://svn-interne-virtuelle/pjc2a/trunk</connection>
-	</scm>
 
 	<!-- Gestion des versions pour les dependances communes -->
 	<properties>
 
-		<tagBase>svn://svn-interne-virtuelle/pjc2a/tags</tagBase>
 		<version.java.mail>1.4.7</version.java.mail>
-		<version.socle-webapp-jsf>1.0.0</version.socle-webapp-jsf>
+		<version.socle-webapp>1.0.1</version.socle-webapp>
 		<version.socle-file>1.0.0</version.socle-file>
 	</properties>
 
@@ -39,8 +34,8 @@
 		</dependency>
 		<dependency>
 			<groupId>fr.adp.socle</groupId>
-			<artifactId>socle-webapp-jsf</artifactId>
-			<version>${version.socle-webapp-jsf}</version>
+			<artifactId>socle-webapp</artifactId>
+			<version>${version.socle-webapp}</version>
 		</dependency>
 
 		<!-- Java Mail -->

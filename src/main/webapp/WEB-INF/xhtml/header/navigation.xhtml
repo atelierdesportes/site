@@ -1,42 +1,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:jsf="http://xmlns.jcp.org/jsf">
 <ui:composition>
 	<div class="header-navigation">
 		<ul>
-			<li><a href="{{ path('_home">Accueil</a></li>
-			<li class="dropdown active">
+			<li class="#{active_menu eq 'accueil' ? 'active' : ''}"><a jsf:outcome="pretty:accueil">Accueil</a></li>
+			<li class="dropdown#{active_menu eq 'services' ? ' active' : ''}">
 				<a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
 					Services
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="">Restauration</a></li>
-					<li><a href="">Projets de restauration</a></li>
-					<li><a href="">Entretien</a></li>
-					<li><a href="">Equilibrage</a></li>
-					<li><a href="">Location</a></li>
+					<li><a jsf:outcome="pretty:services-entretien">Entretien</a></li>
+					<li><a jsf:outcome="pretty:services-restauration">Restauration</a></li>
 				</ul>
 			</li>
-			<li><a href="{{ path('_cars">Nos Véhicules</a></li>
-			<li><a href="">Pièces Détachées</a></li>
-			<li><a href="{{path('_blog')}}">Actualiés</a></li>
-			<li><a href="{{ path('_contact">Nous Contacter</a></li>
+			<li class="#{active_menu eq 'vehicules' ? 'active' : ''}"><a jsf:outcome="pretty:vehicules">Nos Véhicules</a></li>
+			<li class="dropdown#{active_menu eq 'parts' ? ' active' : ''}">
+				<a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+					Pièces Détachées
+				</a>
+				<ul class="dropdown-menu">
+					<li><a jsf:outcome="pretty:parts">Neuf et occasion</a></li>
+					<li><a jsf:outcome="pretty:mecanic">Restauration mécanique</a></li>
+				</ul>
+			</li>
+			<!--<li><a class="#{active_menu eq 'blog' ? 'active' : ''}" jsf:outcome="pretty:accueil">Actualiés</a></li>-->
+			<li class="#{active_menu eq 'contact' ? 'active' : ''}"><a jsf:outcome="pretty:contact">Nous Contacter</a></li>
 	
 			<!-- BEGIN TOP SEARCH -->
 			<li class="menu-search">
-				<span class="sep"></span>
-				<i class="fa fa-search search-btn"></i>
-				<div class="search-box">
-					<form action="#">
-						<div class="input-group">
-							<input type="text" placeholder="Search" class="form-control"/>
-							<span class="input-group-btn">
-								<button class="btn btn-primary" type="submit">Search</button>
-							</span>
-						</div>
-					</form>
-				</div> 
+<!-- 				<span class="sep"></span> -->
+<!-- 				<i class="fa fa-search search-btn"></i> -->
+<!-- 				<div class="search-box"> -->
+<!-- 					<form action="#"> -->
+<!-- 						<div class="input-group"> -->
+<!-- 							<input type="text" placeholder="Search" class="form-control"/> -->
+<!-- 							<span class="input-group-btn"> -->
+<!-- 								<button class="btn btn-primary" type="submit">Search</button> -->
+<!-- 							</span> -->
+<!-- 						</div> -->
+<!-- 					</form> -->
+<!-- 				</div>  -->
 			</li>
 			<!-- END TOP SEARCH -->
 		</ul>

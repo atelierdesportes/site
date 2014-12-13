@@ -14,10 +14,11 @@ public class ContactBean implements Serializable {
 	private boolean errorName;
 	private String contactMail;
 	private boolean errorMail;
+	private String contactTel;
 	private String subject;
 	private String message;
 	private boolean errorMessage;
-	
+
 	private boolean sendSucces;
 	private boolean sendError;
 
@@ -91,6 +92,14 @@ public class ContactBean implements Serializable {
 
 	public void setSendError(boolean sendError) {
 		this.sendError = sendError;
+	}
+
+	public String getContactTel() {
+		return contactTel;
+	}
+
+	public void setContactTel(String contactTel) {
+		this.contactTel = contactTel;
 	}
 
 }
